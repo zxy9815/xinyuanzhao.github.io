@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Xinyuan Zhao/Path Following Robot</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+                                <header id="header">
+                                    <a href="../index.html" class="logo"><strong>Xinyuan Zhao</strong> Portfolio</a>
+                                    <ul class="icons">
+                                        <li><a href="https://www.linkedin.com/in/xinyuan-zhao/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+                                        <li><a href="https://github.com/zxy9815" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                                    </ul>
+                                </header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Path Following Robot with RaspberryPi</h1>
+									</header>
+
+									<span class="image right"><img src="../images/backgroundImgs/WechatIMG94.jpeg" alt="" style="height: 400px;"/></span>
+
+									<p>In this project, I built a RaspberryPi based differential drive robot that can follow the line on the ground
+                                        in autonomous mode using camera. Control and image processing programs are developed using ROS and Python.
+
+                                    </p>
+                                    <h4>Objectives</h4>
+                                    
+                                    <ol>
+                                        <li>Robot can be manually controlled through Keyboard Input and Text Scripts.</li>
+                                        <li>Using fundamentals of dynamics and differential equation, solve the ODE and improve motor control algorithm.</li>
+                                        <li>Robot can recognize lines on the ground using camera</li>
+                                        <li>Robot is able to follow the line stably using PID control</li>
+                                    </ol>
+
+									<hr class="major" />
+
+									<h2>First Stage: Motor Command</h2>
+									<p>​In ROS package, we can define nodes as publishers and subscribers. 
+                                        They can exchange different types of messages in the ROS channel. 
+                                        I wrote programs that define the nodes and they exchange /motor_speeds messages 
+                                        so that the subscriber can control the motor speed according to keyboard or csv files.
+                                    </p>
+
+									<hr class="major" />
+
+									<h2>Second Stage: Improve Motor Command Model</h2>
+									<p>​In this stage I developed a model with parameters k & d to transform linear and angular velocity to motor speed.
+                                        ​Using closed form step model and IMU on robot, I can also track the position of robot by publishing pose message.
+                                    </p>
+                                    
+									<hr class="major" />
+
+									<h2>Third Stage: Image Processing</h2>
+									<p>For every image received by robot, 
+                                        I run a linear classifier on it so that the green color line becomes white [255,255,255] 
+                                        and the background becomes black [0,0,0]. Then I add a centroid to the white component. 
+                                        So, as the robot follows the centroid line, it follows the green line track.
+                                    </p>
+									
+                                    <hr class="major" />
+                                    <h2>Final Stage: PID Controller</h2>
+                                    <p>We define the difference between camera image center and the centroid of image classifier as error message. 
+                                        PID controller adds up the proportional, derivative and integral of every error signal 
+                                        and then pass this message to motor command so that the motor adjust speeds accordingly 
+                                        to lower down this error message to zero. Kp, Ki and Kd are parameters of the error signal. 
+                                        Increasing these parameters increases the speed of correcting the error.
+                                    </p>
+                                    <hr class="major" />
+                                    <h2>Finally, here is a video that documents this semester-long project</h2>
+                                    <ul class="actions">
+                                        <li><a href="https://youtu.be/IrK8IYdAmDY" 
+                                            class="button large"><i class="fab fa-youtube"></i> View Documentary Video (3mins)</a></li>
+                                    </ul>
+
+								</section>
+
+                                <footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="../index.html" class="button primary large">Return Home Page</a></li>
+                                    </ul>
+									<p class="copyright">&copy; Xinyuan Zhao 2021</p>
+								</footer>
+
+						</div>
+					</div>
+
+				
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

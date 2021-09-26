@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Xinyuan Zhao/ Wall Following Robot</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+                                <header id="header">
+                                    <a href="../index.html" class="logo"><strong>Xinyuan Zhao</strong> Portfolio</a>
+                                    <ul class="icons">
+                                        <li><a href="https://www.linkedin.com/in/xinyuan-zhao/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+                                        <li><a href="https://github.com/zxy9815" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                                    </ul>
+                                </header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Wall Following Robot with WiFi Control</h1>
+									</header>
+
+									<span class="image right"><img src="../images/backgroundImgs/Capture.png" alt="" /></span>
+
+									<p>In this project, I designed and built a Differential Drive robot with WiFi control through a 
+                                        web page and has Autonomous Wall Following capability. 
+                                        Compared with the Path Following Robot Project, this project focuses on 
+                                        design and integration of mechatronic systems. 
+                                        Structures were laser cut through CAD files. 
+                                        Circuits were designed from low level H-bridges and logic gates and soldered onto perf boards. 
+                                        Event-based Architecture was used in backend Software in C++ and was programmed into the ESP32 boards. 
+                                        This robot can be controlled both manually through WiFi and autonomously with ultrasonic sensors. 
+                                        A web page was developed for manual control and sensor displays. (Javascript & AJAX) 
+                                    </p>
+                                    <h4>Objectives</h4>
+                                    
+                                    <ol>
+                                        <li>Robot can be manually controlled through WiFi and Web page.</li>
+                                        <li>Robot can do Wall Following using Ultrasonic Sensors.</li>
+                                        <li>Robot can autonomously follow the wall and grab a can located next to the wall.</li>
+                                        <li>This robot will complete a GTA 2021 in-class Competition held by course MEAM510 spring 2021.</li>
+                                    </ol>
+
+									<hr class="major" />
+
+									<h2>Mechanical Design</h2>
+									<p>The Mechanical Design of this project includes design of robot structure, gripper, and motor selection. 
+                                        Layers of Acrylic plates are designed to mount different components and they are connected by standoffs. 
+                                        The gripper is designed to grab cans during the competition and it is controlled by a heavy duty servo motor. 
+                                        The gear motors are selected to make sure that their maximum torque is enough to drive the robot when carrying a can. 
+                                        These parts are fabricated by laser cutting with CAD drawings.
+                                    </p>
+
+									<hr class="major" />
+
+									<h2>Electrical Design</h2>
+									<p>Electrical Design includes designing power circuits, motor driver circuits, and sensor selections. 
+                                        To meet the requirement of maximum current draw from motors, the motors are powered by 6V AA batteries. 
+                                        And the other circuits are driven by a 5V, 2.1A power bank. 
+                                        In order to control the motors using digital commands from ESP32 boards, 
+                                        a motor driver circuit is designed based on the H-bridge and NAND gates. 
+                                        To control the robot to follow the walls, I attached Ultrasonic sensors on the front and right side of the robot. 
+                                        Lever switches acting as touch sensors are also attached at the front to detect collisions.  
+                                    </p>
+                                    
+									<hr class="major" />
+
+									<h2>Software and MCUs Architecture</h2>
+									<p>C++ Codes are programmed into the ESP32 Development Boards which control the robot. 
+                                        For this robot, I used two ESP32 boards and they are connected with wired communications. 
+                                        The main code uses Event-driven architecture and has no blocking codes. 
+                                        The main code includes functions of simple wall following control, manual control using joystick, 
+                                        gripper control, sensor readings, and a web page server. A web page is developed using Javascript, 
+                                        and it includes a joystick controller, buttons for gripper control and switch between autonomous and manual modes, 
+                                        and sensor values display. 
+                                        The web page can send requests to ESP32 using AJAX. ESP32 boards have WiFi modules so that they can assign 
+                                        IP Addresses and connect to the web page using WiFi. A screenshot of my web page is shown below. 
+                                    </p>
+									<span class="image main"><img src="../images/projectImages/Capture.PNG.png" alt="" style="max-height: 800px;max-width: 1000px;"/></span>
+                                    
+                                    <hr class="major" />
+                                    <p>Finally, my robot completed the competition with reliable manual control and wall following performances. 
+                                    </p>
+                                    <ul class="actions">
+                                        <li><a href="../images/files/MEAM510 Final Project Report.pdf" class="button primary large">View Full Project Report</a></li>
+                                        <li><a href="https://youtu.be/rbyzACLpvsc?t=10583" 
+                                            class="button large"><i class="fab fa-youtube"></i> View Final Competition Video (4hrs)</a></li>
+                                    </ul>
+
+								</section>
+
+                                <footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="../index.html" class="button primary large">Return Home Page</a></li>
+                                    </ul>
+									<p class="copyright">&copy; Xinyuan Zhao 2021</p>
+								</footer>
+
+						</div>
+					</div>
+
+				
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
