@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Xinyuan Zhao/ Quadrotor Autonomy</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+                                <header id="header">
+                                    <a href="../index.html" class="logo"><strong>Xinyuan Zhao</strong> Portfolio</a>
+                                    <ul class="icons">
+                                        <li><a href="https://www.linkedin.com/in/xinyuan-zhao/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+                                        <li><a href="https://github.com/zxy9815" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                                    </ul>
+                                </header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Quadrotor Autonomy</h1>
+									</header>
+
+									<span class="image right"><img src="../images/projectImages/Quadrotor_proj/crazyflie.png" alt="" /></span>
+
+									<p>The goal of this project is to make Crazyflie 2.1 fly autonomously from a given start location to a goal location and hover
+                                        at goal. To achieve this, we need to develop a path planner based on a pre-defined occupancy map, a controller for tracking the Path
+                                        , and an odometry system to estimate current poses. The pose estimation will be based on sensor data from IMU and a Stereo Camera.
+                                    </p>
+                            
+
+									<hr class="major" />
+
+									<h2>Path Planner and Controller</h2>
+									<p>Geometric Tracking Control is used for the controller. The controller is divided into a PD based position controller
+                                        and an altitude controller to correct the errors on rotation. Details about Geometric Tracking Control can be refered to this paper
+                                        <a href="https://arxiv.org/pdf/1003.2005.pdf"> Link to Paper</a>. Propotional and Derivative Gains are tuned based on Step Responses.
+                                    </p>
+                                    <p>A* Path Planner is developed based on a pre-defined occupancy map that describes the world. However, the planned path contains only
+                                        the dense waypoints. To improve the performances, we need to reduce the number of waypoints and compute a smooth polynomial curve
+                                        between waypoints. 
+                                        Douglas-Peucker Algorithm is used to reduce waypoints in the path. The algorithm approximates the path with much less waypoints. To
+                                        ensure the algorithm does not remove too many points, I set a distance limit so that there must be a waypoint at every certain distance.
+                                    </p>
+                                    <p>Min-Jerk Optimization: based on the waypoints, we need to compute smooth curves between them to generate a optimized trajectory.
+                                        To do this, we can use the 3rd order Euler Lagrange Equation with piecewise continuity constraints to compute a min-Jerk spline. By
+                                        solving the ODE with constraints, we obtain the desired states for each time interval. And we can input the desired states into
+                                        the controller to execute desired commands.
+                                    </p>
+                                
+
+									<hr class="major" />
+
+									<h2>Visual Inertial Odometry System for Pose Estimation</h2>
+									<p>Odometry system based on a single sensor will be unreliable because of uncertainties. Instead, we can combine the sensor data from
+                                        IMU and Stereo to get a better estimate of the current pose using Kalman Filter. We can use IMU data as input to the non-linear
+                                        dynamical system of the Quadrotor and get a nominal updated state. From stereo images, we can use the feature correspondence 
+                                        of current image and previous image to compute rotation and translation using epipolar geometry. <br>
+                                        <br>
+                                        Kalman Filter helps us to use 
+                                        the measurement from the stereo image and update the nominal state to improve our estimation. However, the rotation in our case 
+                                        cannot be represented as a vector in R3, instead, we can represent the errors of rotation in R3. So in my system, I am using the
+                                        Error State Kalman Filter (ESKF) to estimate the error states and use them to update the nominal states. Details of ESKF can be
+                                        refered to <a href="https://arxiv.org/pdf/1711.02508.pdf">this paper</a> and
+                                         <a href="https://github.com/enginBozkurt/Error-State-Extended-Kalman-Filter">this repo</a>.
+                                    </p>
+                                    
+									<hr class="major" />
+
+									<h2>Results from Flight Tests</h2>
+									<p>Below are the results from the flight tests in Lab. Given start location, goal location, and an occupancy map of the environment,
+                                        the objective is to plan and track a collision-free path from start to goal location.
+                                        The ground truth states are recorded by the VICON system and plotted as 
+                                        the flight path in the graphs below.
+                                        
+                                    </p>
+									<span class="image main"><img src="../images/projectImages/Quadrotor_proj/Path_map2.png" alt="" style="max-height: 800px;max-width: 1000px;"/></span>
+                                    <span class="image main"><img src="../images/projectImages/Quadrotor_proj/pose_record.png" alt="" style="max-height: 800px;max-width: 1000px;"/></span>
+                                    
+                                    <hr class="major" />
+                                    <p>Below is the link to a video recording the Quadrotor flight in the Lab.
+                                    </p>
+                                    <ul class="actions">
+                                        
+                                        <a href="https://www.youtube.com/watch?v=Melty9z__qQ" 
+                                            class="button large"><i class="fab fa-youtube"></i> View Quadrotor Flights</a>
+                                    </ul>
+
+								</section>
+
+                                <footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="../index.html" class="button primary large">Return Home Page</a></li>
+                                    </ul>
+									<p class="copyright">&copy; Xinyuan Zhao 2021</p>
+								</footer>
+
+						</div>
+					</div>
+
+				
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
