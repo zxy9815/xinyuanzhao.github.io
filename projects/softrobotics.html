@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Xinyuan Zhao/ DOTS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+                                <header id="header">
+                                    <a href="../index.html" class="logo"><strong>Xinyuan Zhao</strong> Portfolio</a>
+                                    <ul class="icons">
+                                        <li><a href="https://www.linkedin.com/in/xinyuan-zhao/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+                                        <li><a href="https://github.com/zxy9815" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                                    </ul>
+                                </header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Medical Robotics Research Project</h1>
+									</header>
+
+									<span class="image right"><img src="../images/projectImages/softrobotics/prototype.png" alt="" /></span>
+
+									<p>
+										From 3/2019 to 5/2020, I worked as a research assistant in the <a href="https://sites.bu.edu/mrl/" target="_blank">Material Robotics Lab</a> 
+										at Boston University. Under supervision of Professor Russo, I worked on a project to design a soft robotic arm to assist surgical tasks 
+										during minimally invasive surgery. The arm should by attached at the tip of a rigid endoscope and be able to fold and move in 3 DOF. The 
+										material of the arm should be soft, low-cost, and biocompatible. The arm should be able to be remotely controlled by a surgeon.
+									</p>
+
+                  <p>
+										Initially it was 2 of us working on this project. I was focused on designing the soft actuators that will be placed at the 
+										joints of the arm. And the other student was focused on designing the rigid parts of the arm structure. 
+										After another 2 students joined the project, I switched to work on designing the electo-mechanical control system and the 
+										GUI for remote control. The other students focused on integrating the soft actuators with the rigid arm structure, and 
+										running simulations on SolidWorks. After a year of work, we successfully built a prototype of the arm and demonstrated its functionality with 
+										a pneumatic control system and GUI.
+                  </p>
+
+									<hr class="major" />
+
+									<h2>Mechanical Design</h2>
+									<p>
+										Using AutoCAD and SolidWorks, I designed the soft actuators for the joints based on this 
+										<a href="https://sites.bu.edu/mrl/files/2018/03/Russo_AMT_2017.pdf">paper</a>. The actuators are fabricated using laser cutting and 
+										thermal bonding. By injecting air or liquid into the actuator, it will pop-up and provide force based on pressure. 
+										The most challenging part was to design the actuator so that it can be fabricated in millimeter scale. After trying dozens of designs,
+										I went from larger scale to millimeter scale and finally delivered a reliable design and fabrication recipe for the soft actuators. 
+										(The Green parts in the picture above)
+                  </p>
+
+									<p>
+										After incorporating the soft actuators into the arm structure, we are able to bend and extend the arm by injecting air into the actuators.
+										The actuators at the joints of the arm are able to provide 4N of force at max pressure.
+									</p>
+                  
+									<hr class="major" />
+
+									<h2>Control System</h2>
+									<p>
+										For the second half of the project, I was responsible for designing the control system for the arm. After consulting with the 
+										Phd students in the lab and a student who is designing a similar control system at another lab, I came up with a design that
+										consists of a microcontroller, pneumatic valves, pressure sensors, and a GUI for remote control. The compressed air and vaccum 
+										systems in the lab provide sources for actuation. When user commands on the GUI to 
+										move the arm, the microcontroller will open the corresponding valve to inject or retract the air in the actuator. 
+										The pressure sensors provide feedback to the microcontroller so that it can control the valves to maintain the desired pressure.
+										The GUI was designed using Python and TKinter. It communicates with the microcontroller through serial port and allows user to 
+										control the arm by clicking the buttons.
+                  </p>
+                  <span class="email"><img src="../images/projectImages/softrobotics/controlsystem.png" alt="" style="max-height: 500px;max-width: 1000px;"/></span>
+									<span class="email"><img src="../images/projectImages/softrobotics/GUI.png" alt="" style="max-height: 400px;max-width: 500px;"/></span>
+
+									<p>
+										Unfortunately, due to the COVID-19 pandemic, the lab closed down before we could do more testing on the arm and record nice videos of it.
+									</p>
+
+                  <hr class="major" />
+
+								</section>
+
+                                <footer id="footer">
+                                    <ul class="actions">
+                                        <li><a href="../index.html" class="button primary large">Return Home Page</a></li>
+                                    </ul>
+									<p class="copyright">&copy; Xinyuan Zhao 2021</p>
+								</footer>
+
+						</div>
+					</div>
+
+				
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
